@@ -8,15 +8,15 @@ import org.springframework.stereotype.Component;
 public class CourseJdbcCommandLineRunner implements CommandLineRunner{
 
 	@Autowired
-	private CourseJdbcRepository repository;
+	private CourseJpaRepository repository;
 	
 	@Override
 	public void run(String... args) throws Exception {
 		repository.insert(new Course(6, "Dimitris", "Nothing special"));
 		repository.insert(new Course(7, "Lilios", "Nothing special"));
 		repository.insert(new Course(8, "Liliololis", "Nothing special"));
-		repository.delete(1);
-		System.out.println(repository.findById(2).toString());
+		repository.deleteById(8);
+		System.out.println(repository.findById(6).toString());
 	}
 
 }
